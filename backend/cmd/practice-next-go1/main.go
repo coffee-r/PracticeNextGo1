@@ -2,14 +2,12 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
 
-	"middleware"
-
+	"github.com/coffee-r/practice-next-go1/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/samber/lo"
@@ -24,16 +22,6 @@ type Item struct {
 
 type ItemDeleteInput struct {
 	ID string `uri:"itemId"`
-}
-
-// カスタムクレームの構造体
-type CustomClaims struct {
-	Scope string `json:"scope"`
-}
-
-// Validate メソッドはvalidator.CustomClaimsに必要
-func (c CustomClaims) Validate(ctx context.Context) error {
-	return nil // 実際の実装ではスコープのバリデーションを行う
 }
 
 func main() {
@@ -68,8 +56,8 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	// 認証
-	r.Use(middleware.EnsureValidToken())
+	// Auth0 JWT 検証ミドルウェアを Gin で使う
+	r.Use(middleware.EnsureValidTokenGin())
 	{
 		r.GET("/users/:userId/items", func(c *gin.Context) {
 			c.JSON(200, gin.H{

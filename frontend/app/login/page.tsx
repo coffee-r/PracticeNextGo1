@@ -6,6 +6,7 @@ import Link from "next/link";
 export default async function Login() {
 
     const session = await auth0.getSession()
+    console.log(session?.tokenSet.accessToken)
 
     if (!session) {
         return (

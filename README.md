@@ -66,20 +66,30 @@ docker compose exec frontend sh -c "npm i @auth0/nextjs-auth0"
 # Golang側のCORSの設定
 
 * 開発環境では全部許可
-
-# Googleログイン
-
-# Githubログイン
+* .envで切り分けられればいいかな
 
 # Auth0
 
 * https://manage.auth0.com/
 
-# Next.jsのキャッシュ扱い
-
 # frontend側でAuth0の認証情報取り回し
 
+* https://github.com/auth0/nextjs-auth0 活用
+
+
+# Redisでセッション中央管理
+
+* Webサーバ冗長化を考慮
+* Node.js側に保存しない
+
 # backend側でAuth0を使用した認証情報改ざんチェック&認可
+
+* https://auth0.com/docs/quickstart/backend/golang
+
+# Next.jsのキャッシュ扱い
+
+
+
 
 # Cloudflare R2
 
