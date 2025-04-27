@@ -75,7 +75,7 @@ docker compose exec frontend sh -c "npm i @auth0/nextjs-auth0"
 # frontend側でAuth0の認証情報取り回し
 
 * https://github.com/auth0/nextjs-auth0 活用
-
+* lib/auth0.tsで`scope`と`audience`を引数に入れないとJWTではなくJWEが返ってくるっぽい
 
 # Redisでセッション中央管理
 
@@ -85,11 +85,6 @@ docker compose exec frontend sh -c "npm i @auth0/nextjs-auth0"
 # backend側でAuth0を使用した認証情報改ざんチェック&認可
 
 * https://auth0.com/docs/quickstart/backend/golang
-
-# Next.jsのキャッシュ扱い
-
-
-
 
 # Cloudflare R2
 
